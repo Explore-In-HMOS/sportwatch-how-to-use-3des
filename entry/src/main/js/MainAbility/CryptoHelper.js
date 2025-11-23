@@ -8,7 +8,7 @@ export default class CryptoHelper {
             const result = this.encrypt3DES(key, data);
             return result;
         } catch (error) {
-            console.error("3DES encryption error: " + error);
+            console.error(`3DES encryption error: ${error}`);
             throw error;
         }
     }
@@ -29,26 +29,25 @@ export default class CryptoHelper {
             inData: data
         };
 
-        huks.importKeyItem("3des_key", {
+        huks.importKeyItem('3des_key', {
             properties: this.getImport3DESKeyProperties(),
             inData: key
         }, function (err, importData) {
             if (err) {
-                console.log("import 3DES key error: " + err);
+                console.error(`import 3DES key error: ${err}`);
                 ret = false;
                 return;
             }
 
-            huks.initSession("3des_key", initOptions, function (initErr, initData) {
+            huks.initSession('3des_key', initOptions, function (initErr, initData) {
                 if (initErr) {
-                    console.log("3DES init error code: " + initErr.code + " message: " + initErr.message);
+                    console.error(`3DES init error code: ${initErr.code} message :${initErr.message}`);
                     ret = false;
                     huks.abortSession(initData.handle, initOptions, function (abortErr, abortData) {
                         if (abortErr) {
-                            console.log("3DES init abortSession error code: " + abortErr.code + " message: " +
-                            abortErr.message);
+                            console.error(`3DES init abortSession error code: ${abortErr.code} message :${abortErr.message}`);
                         }
-                        console.log("3DES init abortSession success");
+                        console.info('3DES init abortSession success');
                     });
                 }
 
@@ -56,28 +55,25 @@ export default class CryptoHelper {
             });
 
             if (ret === false) {
-                console.log("3DES initSession failed");
-                return huksInfo;
+                console.error('3DES initSession failed');
             }
 
             huks.finishSession(handle, finishOptions, function (finishErr, finishData) {
                 if (finishErr) {
                     ret = false;
-                    console.log("3DES finishSession error code: " + finishErr.code + " message: " + finishErr.message);
+                    console.error(`3DES finishSession error code: ${finishErr.code} message :${finishErr.message}`);
                     huks.abortSession(handle, finishOptions, function (abortErr, abortData) {
                         if (abortErr) {
-                            console.log("3DES finish abortSession error code: " + abortErr.code + " message: " +
-                            abortErr.message);
+                            console.error(`3DES finish abortSession error code: ${abortErr.code} message :${abortErr.message}`);
                         }
-                        console.log("3DES finish abortSession success");
+                        console.info('3DES finish abortSession success');
                     });
                 }
                 huksInfo = finishData.outData;
             });
 
             if (ret === false) {
-                console.log("3DES finishSession failed");
-                return huksInfo;
+                console.error('3DES finishSession failed');
             }
         });
 

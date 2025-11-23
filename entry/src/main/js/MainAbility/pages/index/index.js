@@ -15,8 +15,8 @@ export default {
         // Expected Result : 41,117,137,40,229, 128,228,248
         // Expected Result : 29758928e580e4f8
 
-        console.log("Encrypted Uint8Array:" + encrypted);
-        console.log("Encrypted HexString:" + cryptoHelper.byteArrayToHexString(encrypted));
+        console.info(`Encrypted Uint8Array: ${encrypted}`);
+        console.info(`Encrypted HexString: ${cryptoHelper.byteArrayToHexString(encrypted)}`);
         this.encryptedHexStringData = cryptoHelper.byteArrayToHexString(encrypted);
     },
 
