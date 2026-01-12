@@ -18,7 +18,7 @@ export default {
         console.info(`Encrypted Uint8Array: ${encrypted}`);
         console.info(`Encrypted HexString: ${cryptoHelper.byteArrayToHexString(encrypted)}`);
         this.encryptedHexStringData = cryptoHelper.byteArrayToHexString(encrypted);
-    },
+    }
 
 };
 

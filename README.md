@@ -21,8 +21,7 @@ This application demonstrates:
 # Tech Stack
 - **Languages**:  JavaScript (Huawei LiteWearable)
 - **Tools**:  Huawei DevEco Studio IDE 5.1.1.840
-- **Libraries**: Huks
-
+- **Libraries**: [`@ohos.security.huks`](https://developer.huawei.com/consumer/en/doc/harmonyos-references/js-apis-huks)
 
 # Directory Structure
 ```
@@ -42,9 +41,6 @@ entry/src/main/ets/
 - Huawei Sport (Lite) Fit 3/4
 - Huawei Sport (Lite) D2
 - Huawei Sport (Lite) Ultimate
-
-# Documentation
-- [Huawei HUKS Overview](https://developer.huawei.com/consumer/en/doc/harmonyos-references/js-apis-huks)
 
 # License
 **How to Implement 3DES Encryption using HUKS on Huawei Sport Lite Wearables** is released under the MIT License.  

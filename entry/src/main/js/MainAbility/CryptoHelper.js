@@ -135,7 +135,7 @@ export default class CryptoHelper {
     hexStringToUint8Array(hexString) {
         let str = hexString;
         if (str.length % 2 !== 0) {
-            str = '0' + str;
+            str = `0${str}`;
         }
         const byteArray = new Uint8Array(str.length / 2);
         for (let i = 0; i < str.length; i += 2) {
@@ -153,7 +153,7 @@ export default class CryptoHelper {
         let hex = '';
         for (let i = 0; i < byteArray.length; i++) {
             const byte = byteArray[i].toString(16);
-            hex += byte.length === 1 ? '0' + byte : byte;
+            hex += `${byte.length === 1 ? '0' : ''}${byte}`;
         }
         return hex;
     }
